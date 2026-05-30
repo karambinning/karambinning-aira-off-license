@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aira Off Licence · Open 24 Hours · 6 Newdigate Street, Derby DE23</title>
+<meta name="description" content="Aira Off Licence on Newdigate Street, Derby. Newsagent, off licence and groceries. Open 24 hours, every day. 01332 774722.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0908;
+    --ink-2:#16110D;
+    --paper:#F2E7CF;
+    --paper-2:#E9D9B6;
+    --neon:#E8A23D;
+    --neon-2:#F2C879;
+    --red:#A82C2C;
+    --mute:#9A8B72;
+    --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --rhythm:clamp(1rem,.7rem + .8vw,1.15rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--body);
+    font-size:var(--rhythm);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--neon);color:var(--ink)}
+  h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.01em;line-height:.88;text-wrap:balance;margin:0}
+  p{text-wrap:pretty;hyphens:auto;margin:0 0 .9em}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+
+  /* paper grain — applied only to cream slabs */
+  .grain{position:relative;isolation:isolate}
+  .grain::after{
+    content:"";
+    position:absolute;inset:0;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>");
+    mix-blend-mode:multiply;
+    opacity:.18;
+    z-index:1;
+  }
+  .grain > *{position:relative;z-index:2}
+
+  /* top hairline */
+  .hairline{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.1rem clamp(1.25rem,4vw,3rem);
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--neon-2);
+    border-bottom:1px solid rgba(232,162,61,.18);
+  }
+  .hairline .pulse{display:inline-flex;align-items:center;gap:.55rem}
+  .pulse-dot{
+    width:.55rem;height:.55rem;border-radius:50%;background:var(--neon);
+    box-shadow:0 0 0 0 rgba(232,162,61,.65);
+    animation:pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(232,162,61,.65)}
+    70%{box-shadow:0 0 0 12px rgba(232,162,61,0)}
+    100%{box-shadow:0 0 0 0 rgba(232,162,61,0)}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(3rem,7vw,6rem);
+    min-height:88vh;
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    gap:clamp(2rem,5vw,4rem);
+    overflow:hidden;
+  }
+  .hero::before{
+    /* slow amber drift behind the type — the "neon sign glow" */
+    content:"";
+    position:absolute;
+    width:80vmax;height:80vmax;
+    left:-20vmax;top:-10vmax;
+    background:radial-gradient(closest-side, rgba(232,162,61,.18), rgba(232,162,61,.04) 55%, transparent 70%);
+    filter:blur(2px);
+    z-index:0;
+    animation:drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    from{transform:translate(0,0)}
+    to{transform:translate(8vmax,4vmax)}
+  }
+  .hero > *{position:relative;z-index:1}
+
+  .hero-name{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.65rem 1.1rem;
+    font-family:var(--display);
+    font-size:clamp(1.05rem,1.3vw,1.25rem);
+    letter-spacing:.04em;text-transform:uppercase;
+    color:var(--paper);
+  }
+  .hero-name .mark{color:var(--red);font-weight:900;letter-spacing:.02em}
+  .hero-name .sep{color:rgba(242,231,207,.35)}
+
+  .hero-h1{
+    font-size:clamp(4.5rem,17vw,17rem);
+    color:var(--neon);
+    line-height:.82;
+    letter-spacing:-.045em;
+    text-transform:uppercase;
+  }
+  .hero-h1 .br{display:block}
+  .hero-h1 .dot{color:var(--red)}
+
+  .hero-foot{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:clamp(1.25rem,3vw,2.5rem);
+    align-items:end;
+  }
+  @media (min-width:780px){
+    .hero-foot{grid-template-columns:1fr auto auto;align-items:end}
+  }
+  .hero-call a{
+    display:inline-block;
+    font-family:var(--display);
+    font-size:clamp(2.1rem,5.5vw,3.6rem);
+    color:var(--paper);
+    text-transform:uppercase;
+    letter-spacing:-.01em;
+    padding-bottom:.15em;
+    border-bottom:3px solid rgba(242,231,207,.18);
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .hero-call a:hover{color:var(--neon);border-bottom-color:var(--neon)}
+  .hero-call .label{
+    display:block;
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--mute);
+    margin-bottom:.55em;
+  }
+  .hero-addr{
+    font-family:var(--mono);font-size:.82rem;line-height:1.5;
+    color:rgba(242,231,207,.78);max-width:18ch;
+  }
+  .hero-addr .post{color:var(--neon-2);letter-spacing:.06em}
+
+  /* MARQUEE */
+  .ticker{
+    background:var(--paper);
+    color:var(--ink);
+    border-top:1px solid rgba(10,9,8,.15);
+    border-bottom:1px solid rgba(10,9,8,.15);
+    overflow:hidden;
+    --speed:38s;
+  }
+  .ticker__track{
+    display:inline-flex;
+    gap:3rem;
+    white-space:nowrap;
+    padding:1.2rem 0;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(1.5rem,3.6vw,2.6rem);
+    text-transform:uppercase;
+    letter-spacing:-.005em;
+    animation:scroll var(--speed) linear infinite;
+  }
+  .ticker__item{display:inline-flex;align-items:center;gap:3rem}
+  .ticker__item .ast{color:var(--red);font-family:var(--mono);font-weight:500;font-size:.7em}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){
+    .ticker__track{animation:none;padding-left:2rem}
+    .hero::before{animation:none}
+    .pulse-dot{animation:none}
+  }
+
+  /* CATEGORY SLABS */
+  .cats{display:grid}
+  .slab{
+    padding:clamp(2.5rem,7vw,6rem) clamp(1.25rem,4vw,3rem);
+    display:grid;
+    grid-template-columns:1fr;
+    gap:clamp(1.5rem,3vw,2.5rem);
+  }
+  @media (min-width:880px){
+    .slab{grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+  }
+  .slab--ink{background:var(--ink);color:var(--paper)}
+  .slab--paper{background:var(--paper);color:var(--ink)}
+  .slab--paper .meta,.slab--paper .num{color:rgba(10,9,8,.55)}
+  .slab .num{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;
+    text-transform:uppercase;color:rgba(242,231,207,.5);
+  }
+  .slab h2{
+    font-size:clamp(3rem,9vw,7rem);
+    text-transform:uppercase;
+    letter-spacing:-.035em;
+  }
+  .slab--ink h2{color:var(--neon)}
+  .slab--paper h2{color:var(--ink-2)}
+  .slab p.lede{
+    font-size:clamp(1.15rem,1.5vw,1.4rem);
+    line-height:1.45;
+    max-width:36ch;
+    margin-bottom:1.4em;
+  }
+  .slab ul.tags{
+    list-style:none;margin:0;padding:0;
+    display:flex;flex-wrap:wrap;gap:.5rem .5rem;
+  }
+  .slab ul.tags li{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:.45em .85em;
+    border:1px solid currentColor;
+    border-radius:0;
+    opacity:.82;
+  }
+
+  /* scroll-driven reveal where supported */
+  @supports (animation-timeline: view()){
+    .reveal{animation:rise both;animation-timeline:view();animation-range:entry 0% cover 30%}
+    @keyframes rise{
+      from{opacity:0;transform:translateY(2rem)}
+      to{opacity:1;transform:translateY(0)}
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{animation:none !important;opacity:1 !important;transform:none !important}
+  }
+
+  /* FIND US — letterhead */
+  .find{
+    background:var(--paper);
+    color:var(--ink);
+    padding:clamp(3rem,8vw,7rem) clamp(1.25rem,4vw,3rem);
+  }
+  .find-grid{
+    display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,4rem);
+    align-items:start;
+  }
+  @media (min-width:880px){
+    .find-grid{grid-template-columns:1.1fr .9fr;gap:clamp(3rem,7vw,7rem)}
+  }
+  .find h2{
+    font-size:clamp(3rem,9vw,7.5rem);
+    color:var(--ink-2);
+    text-transform:uppercase;
+    letter-spacing:-.04em;
+    margin-bottom:.45em;
+  }
+  .letterhead{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2.1rem,4.8vw,3.4rem);
+    line-height:.98;
+    color:var(--ink-2);
+    text-transform:uppercase;
+    letter-spacing:-.005em;
+  }
+  .letterhead .post{color:var(--red);display:block;letter-spacing:.04em;margin-top:.15em}
+  .find .meta{
+    font-family:var(--mono);font-size:.85rem;letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(10,9,8,.55);
+    margin-bottom:.7em;
+  }
+  .find-call{
+    display:block;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(2.6rem,6.5vw,5rem);
+    color:var(--red);
+    text-transform:uppercase;
+    letter-spacing:-.015em;
+    line-height:.95;
+    border-bottom:2px solid var(--red);
+    padding-bottom:.05em;
+    margin-bottom:1.4rem;
+    transition:color .2s, border-color .2s;
+  }
+  .find-call:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .find-hours{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(3.2rem,8vw,6rem);
+    color:var(--ink);
+    text-transform:uppercase;
+    line-height:.85;
+    letter-spacing:-.04em;
+  }
+  .find-hours small{
+    display:block;
+    font-family:var(--mono);font-weight:500;
+    font-size:.95rem;letter-spacing:.12em;
+    color:rgba(10,9,8,.6);
+    margin-top:.8rem;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(2rem,4vw,3rem);
+    border-top:1px solid rgba(232,162,61,.18);
+  }
+  .foot-grid{
+    display:grid;grid-template-columns:1fr;gap:1.5rem;
+    align-items:start;
+  }
+  @media (min-width:780px){
+    .foot-grid{grid-template-columns:1.4fr 1fr 1fr;gap:3rem}
+  }
+  .foot-grid h3{
+    font-family:var(--mono);font-size:.78rem;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--neon-2);
+    margin-bottom:1rem;
+    font-style:normal;
+  }
+  .foot-name{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(2.2rem,4vw,3rem);
+    text-transform:uppercase;line-height:.9;
+    color:var(--paper);
+    margin-bottom:.4em;
+  }
+  .foot-name .red{color:var(--red)}
+  .foot-trade{
+    font-family:var(--mono);font-size:.85rem;
+    color:rgba(242,231,207,.65);max-width:30ch;
+    line-height:1.55;
+  }
+  .foot-list{font-family:var(--mono);font-size:.9rem;line-height:1.9;color:rgba(242,231,207,.85)}
+  .foot-list a:hover{color:var(--neon)}
+  .foot-bottom{
+    margin-top:clamp(2rem,4vw,3rem);
+    padding-top:1.4rem;
+    border-top:1px solid rgba(232,162,61,.14);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--mute);
+  }
+  .badge{
+    display:inline-flex;gap:.55rem;align-items:center;
+    border:1px solid rgba(232,162,61,.32);
+    padding:.45em .8em;color:var(--neon-2);
+  }
+  .badge .tick{color:var(--neon);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="hairline">
+  <span>Aira Off Licence · Derby DE23</span>
+  <span class="pulse"><span class="pulse-dot"></span>Open now · 24 hours</span>
+</header>
+
+<section class="hero" aria-label="Aira Off Licence — Open 24 hours">
+  <div class="hero-name">
+    <span class="mark">Aira</span>
+    <span class="sep">/</span>
+    <span>Off Licence</span>
+    <span class="sep">/</span>
+    <span>Newdigate Street</span>
+  </div>
+
+  <h1 class="hero-h1" aria-label="Open. 24 hours.">
+    <span class="br">Open<span class="dot">.</span></span>
+    <span class="br">24 Hours<span class="dot">.</span></span>
+  </h1>
+
+  <div class="hero-foot">
+    <div class="hero-call">
+      <span class="label">Call the shop</span>
+      <a href="tel:+441332774722" aria-label="Call Aira Off Licence on 01332 774722">01332&nbsp;774&nbsp;722</a>
+    </div>
+    <address class="hero-addr">
+      6 Newdigate Street<br>
+      Derby<br>
+      <span class="post">DE23&nbsp;8UY</span>
+    </address>
+  </div>
+</section>
+
+<div class="ticker grain" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">
+      Newsagent <span class="ast">✦</span> Off Licence <span class="ast">✦</span> Groceries <span class="ast">✦</span> Open 24 Hours <span class="ast">✦</span> Newdigate Street DE23 <span class="ast">✦</span>
+    </span>
+    <span class="ticker__item">
+      Newsagent <span class="ast">✦</span> Off Licence <span class="ast">✦</span> Groceries <span class="ast">✦</span> Open 24 Hours <span class="ast">✦</span> Newdigate Street DE23 <span class="ast">✦</span>
+    </span>
+  </div>
+</div>
+
+<section class="cats" aria-label="What we sell">
+
+  <article class="slab slab--ink reveal">
+    <div>
+      <div class="num">01 / 03</div>
+      <h2>News &amp;<br>Magazines</h2>
+    </div>
+    <div>
+      <p class="lede">Newspapers, magazines, the morning paper and the evening one. Trading also as Newdigate News on the newsagent side.</p>
+      <ul class="tags">
+        <li>Daily papers</li>
+        <li>Magazines</li>
+        <li>Greetings</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="slab slab--paper grain reveal">
+    <div>
+      <div class="num">02 / 03</div>
+      <h2>Off<br>Licence</h2>
+    </div>
+    <div>
+      <p class="lede">Beer, wine, spirits — the licensed side of the shop, open whatever hour the night is at.</p>
+      <ul class="tags">
+        <li>Beer</li>
+        <li>Wine</li>
+        <li>Spirits</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="slab slab--ink reveal">
+    <div>
+      <div class="num">03 / 03</div>
+      <h2>Everyday<br>Groceries</h2>
+    </div>
+    <div>
+      <p class="lede">Milk, bread, snacks, soft drinks and the everyday essentials — the convenience-store basics, stocked round the clock.</p>
+      <ul class="tags">
+        <li>Milk &amp; bread</li>
+        <li>Snacks</li>
+        <li>Soft drinks</li>
+        <li>Essentials</li>
+      </ul>
+    </div>
+  </article>
+
+</section>
+
+<section class="find grain" aria-label="Find us">
+  <div class="find-grid">
+    <div class="reveal">
+      <h2>Find us.</h2>
+      <p class="meta">— Address</p>
+      <p class="letterhead">
+        Aira Off Licence<br>
+        6 Newdigate Street<br>
+        Derby<br>
+        <span class="post">DE23 8UY</span>
+      </p>
+    </div>
+    <div class="reveal">
+      <p class="meta">— Call us</p>
+      <a class="find-call" href="tel:+441332774722">01332 774 722</a>
+
+      <p class="meta">— Opening hours</p>
+      <p class="find-hours">
+        24<br>Hours.
+        <small>Every day. Every night.</small>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <p class="foot-name"><span class="red">Aira</span> Off&nbsp;Licence</p>
+      <p class="foot-trade">Also trading as Newdigate News &amp; Off Licence — newsagent, off licence and convenience store on Newdigate Street, Derby.</p>
+    </div>
+    <div class="foot-list">
+      <h3>Contact</h3>
+      <a href="tel:+441332774722">01332 774 722</a><br>
+      <a href="https://instagram.com/airaofflicence" target="_blank" rel="noopener">@airaofflicence</a>
+    </div>
+    <div class="foot-list">
+      <h3>Find us</h3>
+      6 Newdigate Street<br>
+      Derby<br>
+      DE23 8UY
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© Aira Off Licence · Derby</span>
+    <span class="badge"><span class="tick">✓</span>Food Hygiene Rating · Good · Apr 2025</span>
+  </div>
+</footer>
+
+</body>
+</html>
